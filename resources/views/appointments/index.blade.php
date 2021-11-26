@@ -37,9 +37,12 @@
   <tbody>
   @foreach ($appointments as $appointment)
         <tr> 
-            <td>{{ $appointment->id }}</td>
-            <td>{{ $appointment->doctor_id }}</td>
-            <td>{{ $appointment->patient_id }}</td>
+            <td>{{ $appointment->id }}</td>    
+            
+            
+            <td>{{app\Models\Doctor::find($appointment->doctor_id)->name}}</td>
+           
+            <td>{{app\Models\Patient::find($appointment->patient_id)->name}}</td>
             <td>{{ $appointment->appointment_date }}</td>
             <td>{{ $appointment->appointment_time }}</td>
             <td>{{ $appointment->appointment_day }}</td>

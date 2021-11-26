@@ -4,7 +4,7 @@
 
 <div class="card">
   <div class="card-header">
-    <h3>Patients</h3>
+    <h3>List of Patients</h3>
   </div>
   <div class="card-body">
     <h5 class="card-title"></h5><table class="table table-dark">
