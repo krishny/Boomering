@@ -28,6 +28,7 @@ Route::get('/', function () {
 Route::get('/doctors/create', [DoctorsController::class, 'create']);
 Route::post('/doctors', [DoctorsController::class, 'store']);
 Route::delete('doctors/{doctor}', [DoctorsController::class, 'destroy']);
+Route::get('doctors/details/{id}', [DoctorsController::class, 'getDetails'])->name('getDetails');
 
 Route::get('/patients/create', [PatientsController::class, 'create']);
 Route::post('/patients', [PatientsController::class, 'store']);

@@ -90,6 +90,7 @@
             <input placeholder="Room number"
                     id = "appointment-room_no"
                     requided
+                    readonly
                     name="room_no"
                     spellcheck="false"
                     class="form-control"
@@ -131,4 +132,23 @@
 </form>
   </div>
 </div>
+<script type="text/javascript">
+$('#appointment-doctor_id').change(function(){
+    var id = $(this).val();
+    var url = '{{ route("getDetails", ":id") }}';
+    url = url.replace(':id', id);
+
+    $.ajax({
+        url: url,
+        type: 'get',
+        dataType: 'json',
+        success: function(response){
+            if(response != null){
+                $('#appointment-room_no').val(response.room_no);
+            }
+           
+        }
+    });
+});
+</script>
 @endsection

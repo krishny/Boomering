@@ -18,6 +18,12 @@ class DoctorsController extends Controller
         return view('doctors.index', ['doctors' => $doctors]);
     }
 
+    public function getDetails($id = 0)
+{
+    $data = Doctor::where('id',$id)->first();
+    return response()->json($data);
+}
+
     /**
      * Show the form for creating a new resource.
      *

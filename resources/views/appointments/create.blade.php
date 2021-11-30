@@ -24,7 +24,7 @@
             <select id="appointment-doctor_id" name="doctor_id" class="form-control">
             
               @foreach ($doctors as $doctor)
-               <option value="{{ $doctor->id }}">{{ $doctor->name }}</option>
+               <option value="{{ $doctor->id}}">{{ $doctor->name }}</option>
               @endforeach 
             </select>
           </div>
@@ -82,11 +82,12 @@
                     id = "appointment-room_no"
                     requided
                     name="room_no"
+                    readonly
                     spellcheck="false"
                     class="form-control"
-                    
                     >
           </div>
+       
 
           <div class="form-group"> 
             <lable for="appointment-note"> Note<span class="required">*</span></lable>
@@ -119,5 +120,26 @@
 </form>
   </div>
 </div>
+<script type="text/javascript">
+$('#appointment-doctor_id').change(function(){
+    var id = $(this).val();
+    var url = '{{ route("getDetails", ":id") }}';
+    url = url.replace(':id', id);
+
+    $.ajax({
+        url: url,
+        type: 'get',
+        dataType: 'json',
+        success: function(response){
+            if(response != null){
+                $('#appointment-room_no').val(response.room_no);
+            }
+           
+        }
+    });
+});
+</script>
 @endsection
+
+
 
