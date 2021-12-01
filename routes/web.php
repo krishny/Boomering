@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\DoctorsController;
+use App\Http\Controllers\PatientsController;
 
 use App\Models\Doctor;
 /*
@@ -29,6 +30,7 @@ Route::get('/doctors/create', [DoctorsController::class, 'create']);
 Route::post('/doctors', [DoctorsController::class, 'store']);
 Route::delete('doctors/{doctor}', [DoctorsController::class, 'destroy']);
 Route::get('doctors/details/{id}', [DoctorsController::class, 'getDetails'])->name('getDetails');
+Route::get('doctors/docpatient/{id}', [PatientsController::class, 'docpatient'])->name('docpatient');
 
 Route::get('/patients/create', [PatientsController::class, 'create']);
 Route::post('/patients', [PatientsController::class, 'store']);

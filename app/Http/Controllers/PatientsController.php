@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Patient;
+use App\Models\Appointment;
+use App\Models\Doctor;
 use Illuminate\Http\Request;
 
 class PatientsController extends Controller
@@ -60,6 +62,16 @@ class PatientsController extends Controller
     {
         $patient = Patient::where('id', $patient->id)->first();
         return view('patients.show', ['patient' => $patient]);
+    }
+
+    public function docpatient( $docpatient)
+
+    {
+        $doctorx = Doctor::where('id',$docpatient)->first();
+        $appointmentx = Appointment::where('doctor_id', $docpatient)->first();
+        $patientx = $appointmentx->patient_id;
+        $patients = Patient::where('id', $patientx)->get();
+        return view('patients.docpatient', compact('patients'));
     }
 
 
